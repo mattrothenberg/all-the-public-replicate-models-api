@@ -2,8 +2,16 @@
 import stats from "all-the-public-replicate-models/stats";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 
 const app = new Hono();
+
+app.use(
+  "/*",
+  cors({
+    origin: "*",
+  }),
+);
 
 app.get("/stats/:owner/:model", (c) => {
   const { model, owner } = c.req.param();
