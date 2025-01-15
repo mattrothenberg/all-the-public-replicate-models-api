@@ -17,7 +17,7 @@ app.get("/stats/:owner/:model", (c) => {
   return c.json(match || {}, 200);
 });
 
-const port = 3000;
+const port = process.env.PORT ? Number.parseInt(process.env.PORT) : 3000;
 
 console.log(`Server is running on http://localhost:${port}`);
 
